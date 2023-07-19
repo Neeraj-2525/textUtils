@@ -3,6 +3,8 @@ import materialColors from './Colors'
 
 export default function About(props) {
 
+    document.title = props.setTitle
+
     let outerBodyStyle = {
         color: props.mode === 'dark' ? 'white' : 'black',
         backgroundColor: props.mode === 'dark' ? '#633b48' : "#aed79a"

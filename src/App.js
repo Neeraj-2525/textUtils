@@ -18,6 +18,7 @@ function App() {
 
 
   const [alert, setAlert] = useState(null);
+  const [title, setTitle] = useState("Home - TextUtils")
 
   // const removeBodyClasses = ()=>{
   //   document.body.classList.remove('bg-light')
@@ -65,13 +66,13 @@ function App() {
 
         <div className="container my-4">
           <Routes>
-            <Route exact path='/about' element={<About mode={mode}  />}>
+            <Route exact path='/about' element={<About mode={mode} setTitle="About - TextUtils" />}>
             </Route>
 
-            <Route exact path='/contact' element={<Contact mode={mode}  />}>
+            <Route exact path='/contact' element={<Contact mode={mode} setTitle="Contact - TextUtils" />}>
             </Route>
 
-            <Route exact path='/' element={<Textform showAlert={showAlert} heading="Try TextUtils - Word Counter, Character Counter, Text To Speech" mode={mode}  />}>
+            <Route exact path='/' element={<Textform setTitle="Home - TextUtils" showAlert={showAlert} heading="Try TextUtils - Word Counter, Character Counter, Text To Speech" mode={mode}  />}>
             </Route>
           </Routes>
         </div>

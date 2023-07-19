@@ -8,6 +8,8 @@ export default function Textform(props) {
     // text = "new text"    // wrong way to change the state
     // setText("new text")   // correct way to change the state
 
+    document.title = props.setTitle
+
     let btnStyle = {
         backgroundColor: props.mode==='dark'?materialColors.darkBtn:materialColors.lightBtn,
         color: props.mode==='light'?'#000':'white'

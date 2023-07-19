@@ -6,6 +6,7 @@ export default function Contact(props) {
         backgroundColor: props.mode==='dark'?materialColors.darkForm:materialColors.lightForm, color: props.mode==='light'?'#000':'white'
     }
 
+    document.title = props.setTitle
     
 
     return (
