@@ -7,13 +7,12 @@ import Textform from './components/Textform';
 import Alert from './components/Alert';
 
 import {
-  createBrowserRouter,
   BrowserRouter as Router,
-  RouterProvider,
   Route,
-  Routes,
-  Link
+  Routes
 } from "react-router-dom";
+import Contact from './components/Contact';
+import materialColors from './components/Colors';
 
 function App() {
 
@@ -43,16 +42,17 @@ function App() {
   const [mode, setMode] = useState('light') // tells whether dark mode is enabled or not
   const [modeBtnTxt, setModeBtnTxt] = useState('Dark Mode')
 
+
   const toggleMode = () => {
     if (mode === 'light') {
       setMode('dark');
       setModeBtnTxt('Light Mode')
-      document.body.style.backgroundColor = '#15171a'
+      document.body.style.backgroundColor = materialColors.darkBody;
     }
     else {
       setMode('light')
       setModeBtnTxt('Dark Mode')
-      document.body.style.backgroundColor = 'white'
+      document.body.style.backgroundColor = materialColors.lightBody;
     }
   }
 
@@ -60,17 +60,20 @@ function App() {
     <>
 
       <Router>
-        <Navbar title="TextUtils" aboutText="About" modeBtn={modeBtnTxt} mode={mode} toggleMode={toggleMode} />
+        <Navbar title="TextUtils" aboutText="About" modeBtn={modeBtnTxt} mode={mode}  toggleMode={toggleMode} />
         <Alert alert={alert} />
 
-        <div className="container my-3">
-            <Routes>
-              <Route exact path='/about' element={<About mode={mode}/>}>
-              </Route>
+        <div className="container my-4">
+          <Routes>
+            <Route exact path='/about' element={<About mode={mode}  />}>
+            </Route>
 
-              <Route exact path='/' element={<Textform showAlert={showAlert} heading="Try TextUtils - Word Counter, Character Counter, Text To Speech" mode={mode} />}>
-              </Route>
-            </Routes>
+            <Route exact path='/contact' element={<Contact mode={mode}  />}>
+            </Route>
+
+            <Route exact path='/' element={<Textform showAlert={showAlert} heading="Try TextUtils - Word Counter, Character Counter, Text To Speech" mode={mode}  />}>
+            </Route>
+          </Routes>
         </div>
       </Router>
     </>

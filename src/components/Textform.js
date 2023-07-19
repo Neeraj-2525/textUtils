@@ -1,10 +1,17 @@
 import React, { useState } from 'react'
+import materialColors from './Colors';
+
 
 
 export default function Textform(props) {
-    const [text, setText] = useState("");    //Important
+    const [text, setText] = useState("Clear This Text To Start Writing.");    //Important
     // text = "new text"    // wrong way to change the state
     // setText("new text")   // correct way to change the state
+
+    let btnStyle = {
+        backgroundColor: props.mode==='dark'?materialColors.darkBtn:materialColors.lightBtn,
+        color: props.mode==='light'?'#000':'white'
+    }
 
 
     const handleUpClick = () => {
@@ -65,7 +72,7 @@ export default function Textform(props) {
     }
 
     const upFirstLetter = () => {
-        let words = text.split(" ");
+        let words = text.split(/\s+/);
         let capitalizedWords = words.map(word => {
             return word.charAt(0).toUpperCase() + word.slice(1);
         })
@@ -91,14 +98,14 @@ export default function Textform(props) {
             <div className='container' >
                 <h2 className={`fw-medium text-opacity-75 mb-4 text-${props.mode==='dark'?'white':'black'}`}>{props.heading}</h2>
                 <div className="mb-3">
-                    <textarea className="form-control border-primary border-opacity-25" style={{backgroundColor: props.mode==='dark'?'#1b1d1f':'#f8faff', color: props.mode==='light'?'#000':'white'}} value={text} onChange={handleOnChange} id="myTextBox" rows="8"></textarea>
+                    <textarea className="form-control border-primary border-opacity-25" style={{backgroundColor: props.mode==='dark'?materialColors.darkForm:materialColors.lightForm, color: props.mode==='light'?'#000':'white'}} value={text} onChange={handleOnChange} id="myTextBox" rows="8"></textarea>
                 </div>
-                <button disabled={text.length===0} className='btn btn-primary mx-2 my-1 shadow-sm' onClick={handleUpClick}>Uppercase</button>
-                <button disabled={text.length===0} className='btn btn-primary mx-2 my-1 shadow-sm' onClick={handleLowClick}>Lowercase</button>
-                <button disabled={text.length===0} className='btn btn-primary mx-2 my-1 shadow-sm' onClick={upFirstLetter}>Camel Case</button>
-                <button disabled={text.length===0} className='btn btn-primary mx-2 my-1 shadow-sm' onClick={handleCopy}>{cpyBtnText}</button>
-                <button disabled={text.length===0} className='btn btn-success mx-2 my-1 shadow-sm' id='toggleSpeak' onClick={speak} >Speak</button>
-                <button disabled={text.length===0} className='btn btn-danger mx-2 my-1 shadow-sm' onClick={clearText}>Clear</button>
+                <button disabled={text.length===0} className='btn mx-2 my-1 shadow-sm border-0 btnHoverColorChange' style={{backgroundColor: props.mode==='dark'?materialColors.darkBtn:materialColors.lightBtn, color: props.mode==='light'?'#000':'white'}} onClick={handleUpClick}>Uppercase</button>
+                <button disabled={text.length===0} className='btn mx-2 my-1 shadow-sm border-0 btnHoverColorChange' style={btnStyle} onClick={handleLowClick}>Lowercase</button>
+                <button disabled={text.length===0} className='btn mx-2 my-1 shadow-sm border-0 btnHoverColorChange' style={btnStyle} onClick={upFirstLetter}>Camel Case</button>
+                <button disabled={text.length===0} className='btn mx-2 my-1 shadow-sm border-0 btnHoverColorChange' style={btnStyle} onClick={handleCopy}>{cpyBtnText}</button>
+                <button disabled={text.length===0} className='btn mx-2 my-1 shadow-sm border-0 btnHoverColorChange' style={btnStyle} id='toggleSpeak' onClick={speak} >Speak</button>
+                <button disabled={text.length===0} className='btn btn-danger mx-2 my-1 shadow-sm border-0'  onClick={clearText}>Clear</button>
             </div>
             <div className="container my-4" style={{color: props.mode==='dark'?'white':'black'}}>
                 <h2 className='fw-light'>Your text summary</h2>

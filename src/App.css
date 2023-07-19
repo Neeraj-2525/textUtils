@@ -43,6 +43,22 @@
   /* background-color: #202020; */
 }
 
+.navbar-toggler{
+  z-index: 999;
+}
+
+
+/* ****** mode switch ****** */
+
+.switchContainer{
+  /* background: #000; */
+  position: absolute;
+  top: 3%;
+  right: 2%;
+  width: 140px;
+  z-index: 0;
+}
+
 .switch {
   font-size: 17px;
   position: relative;
@@ -152,3 +168,17 @@
 }
 
 
+.btnHoverColorChange:hover{
+  filter:brightness(90%);
+}
+
+
+/* Add the styles for the switch in the navbar */
+/* .switch {
+  position: relative;
+  display: inline-block;
+} */
+
+.accordion-button {
+  color: white;
+}
